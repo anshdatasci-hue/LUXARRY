@@ -1,0 +1,17 @@
+export const cta = {
+  exploreBrands: { label: "Explore Brands", href: "/brands" },
+  exploreStories: { label: "Explore Stories", href: "/stories" },
+  exploreExperiences: { label: "Explore Experiences", href: "/experiences" },
+  viewAllBrands: { label: "View All Brands", href: "/brands" },
+  exploreStoriesSection: { label: "Explore Stories", href: "/stories" },
+  learnMore: { label: "Learn More", href: "/stories" },
+  readEditorials: { label: "Read Editorials", href: "/editorial" },
+  exploreExperiencesSection: { label: "Explore Experiences", href: "/experiences" },
+  browseCategories: { label: "Browse Categories", href: "/categories/fashion" },
+  createAccount: { label: "Create Account", href: "/sign-up" },
+  exploreBrand: { label: "Explore Brand", href: "#" },
+  readStory: { label: "Read Story", href: "#" },
+  readEditorial: { label: "Read Editorial", href: "#" },
+  exploreExperience: { label: "Explore Experience", href: "#" },
+  exploreCategory: { label: "Explore Category", href: "#" },
+};
