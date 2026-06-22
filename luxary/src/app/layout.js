@@ -4,6 +4,10 @@ import SkipLink from "@/components/layout/SkipLink";
 import SiteHeader from "@/components/layout/SiteHeader";
 import SiteFooter from "@/components/layout/SiteFooter";
 import { siteConfig } from "@/config/navigation";
+import { CartProvider } from "@/context/CartContext";
+import { WishlistProvider } from "@/context/WishlistContext";
+// import { CartProvider } from "@/context/CartContext";
+import { ToastProvider } from "@/context/ToastContext";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -20,19 +24,22 @@ const dmSans = DM_Sans({
 });
 
 export const metadata = {
-  title: "Luxary — Discover Luxury Through Heritage, Storytelling & Craftsmanship",
+  title:
+    "Luxary — Discover Luxury Through Heritage, Storytelling & Craftsmanship",
   description:
     "Luxary is a luxury discovery platform. Explore iconic brands through heritage stories, craftsmanship insights, editorial features, and immersive experiences.",
   openGraph: {
     type: "website",
-    title: "Luxary — Discover Luxury Through Heritage, Storytelling & Craftsmanship",
+    title:
+      "Luxary — Discover Luxury Through Heritage, Storytelling & Craftsmanship",
     description:
       "Explore iconic luxury brands through heritage, storytelling, craftsmanship, and immersive experiences.",
     siteName: "Luxary",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Luxary — Discover Luxury Through Heritage, Storytelling & Craftsmanship",
+    title:
+      "Luxary — Discover Luxury Through Heritage, Storytelling & Craftsmanship",
     description:
       "Explore iconic luxury brands through heritage, storytelling, craftsmanship, and immersive experiences.",
   },
@@ -49,12 +56,16 @@ export default function RootLayout({ children }) {
       className={`${cormorant.variable} ${dmSans.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-foreground">
-        <SkipLink />
-        <SiteHeader />
-        <main id="main-content" className="flex-1">
-          {children}
-        </main>
-        <SiteFooter />
+        <CartProvider>
+          <WishlistProvider>
+            <ToastProvider>
+              <SkipLink />
+              <SiteHeader />
+              <main id="main-content">{children}</main>
+              <SiteFooter />
+            </ToastProvider>
+          </WishlistProvider>
+        </CartProvider>
       </body>
     </html>
   );

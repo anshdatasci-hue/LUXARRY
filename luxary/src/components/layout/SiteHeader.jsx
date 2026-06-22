@@ -12,6 +12,9 @@ import {
   siteConfig,
 } from "@/config/navigation";
 
+import { useCart } from "@/context/CartContext";
+import { useWishlist } from "@/context/WishlistContext";
+
 function SearchIcon() {
   return (
     <svg
@@ -33,10 +36,12 @@ function SearchIcon() {
 }
 
 export default function SiteHeader() {
+  const { cartItems } = useCart();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const pathname = usePathname();
   const shouldReduceMotion = useReducedMotion();
+  const { wishlistItems } = useWishlist();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -96,25 +101,35 @@ export default function SiteHeader() {
           </nav>
 
           <div className="hidden items-center gap-6 lg:flex">
-            <nav aria-label="Utility">
-              <ul className="flex items-center gap-6">
-                {secondaryNavItems.map((item) => (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      className="flex items-center gap-1.5 text-sm tracking-wide text-muted transition-colors hover:text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
-                      aria-label={item.variant === "search" ? "Search" : item.label}
-                    >
-                      {item.variant === "search" && <SearchIcon />}
-                      <span className={item.variant === "search" ? "sr-only" : ""}>
-                        {item.label}
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
+  <nav aria-label="Utility">
+    <ul className="flex items-center gap-6">
+      {secondaryNavItems.map((item) => (
+        <li key={item.href}>
+          <Link
+            href={item.href}
+            className="flex items-center gap-1.5 text-sm tracking-wide text-muted transition-colors hover:text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+            aria-label={item.variant === "search" ? "Search" : item.label}
+          >
+            {item.variant === "search" && <SearchIcon />}
+            <span className={item.variant === "search" ? "sr-only" : ""}>
+              {item.label}
+            </span>
+          </Link>
+        </li>
+      ))}
+    </ul>
+  </nav>
+
+  <Link
+    href="/cart"
+    className="text-sm tracking-wide text-muted transition-colors hover:text-foreground"
+  >
+    Cart ({cartItems.length})
+  </Link>
+<Link href="/wishlist">
+  Wishlist ({wishlistItems.length})
+</Link>
+</div>
 
           <button
             type="button"

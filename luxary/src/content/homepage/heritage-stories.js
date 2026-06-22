@@ -12,7 +12,7 @@ export const heritageStoriesContent = {
       "From Hans Wilsdorf's vision in London to the Oyster case revolution — explore how Rolex became the benchmark of horological excellence.",
     href: "/stories/history-of-rolex",
     image: {
-      src: "https://picsum.photos/800/600?random=3",
+      src: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49",
       alt: "Vintage watchmaking tools representing Rolex heritage and legacy",
     },
   },
@@ -24,7 +24,7 @@ export const heritageStoriesContent = {
         "How a young trunk-maker in Paris built the foundation of modern luxury travel.",
       href: "/stories/origins-of-louis-vuitton",
       image: {
-        src: "https://picsum.photos/800/600?random=3",
+        src: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49",
         alt: "Heritage luxury trunk craftsmanship of Louis Vuitton origins",
       },
     },
@@ -35,7 +35,7 @@ export const heritageStoriesContent = {
         "Christian Dior's 1947 collection that redefined post-war femininity and haute couture.",
       href: "/stories/dior-new-look-revolution",
       image: {
-        src: "https://picsum.photos/800/600?random=3",
+        src: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49",
         alt: "Elegant haute couture fashion representing Dior's New Look era",
       },
     },
@@ -46,7 +46,7 @@ export const heritageStoriesContent = {
         "The story behind the iconic mascot and Rolls-Royce's commitment to bespoke excellence.",
       href: "/stories/rolls-royce-spirit-of-ecstasy",
       image: {
-        src: "https://picsum.photos/800/600?random=3",
+        src: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49",
         alt: "Classic luxury automobile representing Rolls-Royce automotive heritage",
       },
     },

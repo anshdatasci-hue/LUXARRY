@@ -6,7 +6,7 @@ export const categories = [
       "Haute couture, heritage maisons, and the art of luxury dressmaking.",
     href: "/categories/fashion",
     image: {
-      src: "https://picsum.photos/800/600?random=1",
+      src: "/images/products/lady-dior.jpg",
       alt: "Elegant luxury fashion atelier with draped fabrics",
     },
   },
@@ -17,7 +17,7 @@ export const categories = [
       "Horological mastery, complications, and centuries of precision craft.",
     href: "/categories/watches",
     image: {
-      src: "https://picsum.photos/800/600?random=2",
+      src: "/images/products/rolex-daytona.jpg",
       alt: "Intricate luxury watch movement showcasing fine watchmaking",
     },
   },
@@ -28,7 +28,7 @@ export const categories = [
       "Gemstone artistry, goldsmith traditions, and iconic creations.",
     href: "/categories/jewelry",
     image: {
-      src: "https://picsum.photos/800/600?random=1",
+      src: "/images/products/cartier-love.jpg",
       alt: "Fine jewelry craftsmanship with precious gemstones",
     },
   },
@@ -39,7 +39,7 @@ export const categories = [
       "Engineering excellence, bespoke coachbuilding, and automotive legacy.",
     href: "/categories/automotive",
     image: {
-      src: "https://picsum.photos/800/600?random=1",
+      src: "/images/products/rr-phantom.jpg",
       alt: "Luxury automobile showcasing refined automotive design",
     },
   },
@@ -50,7 +50,7 @@ export const categories = [
       "Legendary hotels, exceptional service, and destination experiences.",
     href: "/categories/hospitality",
     image: {
-      src: "https://picsum.photos/800/600?random=1",
+      src: "/images/homepage/LUXURRY.jpg",
       alt: "Grand luxury hotel lobby with elegant architectural details",
     },
   },
@@ -60,7 +60,7 @@ export const categories = [
     description: "Fragrance houses, skincare innovation, and beauty rituals.",
     href: "/categories/beauty",
     image: {
-      src: "https://picsum.photos/800/600?random=1",
+      src: "/images/brand-heroes/herooo.jpg",
       alt: "Luxury beauty products arranged in an editorial composition",
     },
   },

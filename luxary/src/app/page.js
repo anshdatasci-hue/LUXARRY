@@ -9,6 +9,7 @@ import ExploreByCategorySection from "@/components/homepage/ExploreByCategorySec
 import PersonalizationSection from "@/components/homepage/PersonalizationSection";
 import { homepageContent } from "@/content/homepage";
 import { siteConfig } from "@/config/navigation";
+import FeaturedProducts from "@/components/homepage/FeaturedProducts";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -48,6 +49,7 @@ export default function Home() {
       />
       <HomepageLayout>
         <HeroSection content={hero} />
+        <FeaturedProducts />
         <FeaturedBrandsSection content={featuredBrands} />
         <HeritageLegacyStoriesSection content={heritageStories} />
         <CraftsmanshipSpotlightSection content={craftsmanship} />

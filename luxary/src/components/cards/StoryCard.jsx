@@ -7,13 +7,15 @@ export default function StoryCard({ story, featured = false }) {
     <MotionCardHover>
       <article className="group h-full">
         <Link
-          href={story.href}
+          href={story.href || `/stories/${story.slug}`}
           className="flex h-full flex-col focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
           aria-label={`Read story: ${story.title}`}
         >
           <DiscoveryImage
-            src={story.image.src}
-            alt={story.image.alt}
+            // src={story.image.src}
+            // alt={story.image.alt}
+            src={story.image?.src || story.heroImage}
+            alt={story.image?.alt || story.alt || story.title}
             aspectRatio={featured ? "aspect-[16/10]" : "aspect-[4/3]"}
             sizes={
               featured
@@ -33,7 +35,7 @@ export default function StoryCard({ story, featured = false }) {
               {story.title}
             </h3>
             <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">
-              {story.summary}
+              {story.summary || story.excerpt}
             </p>
             <span className="mt-4 text-xs font-medium tracking-widest uppercase text-accent">
               Read Story

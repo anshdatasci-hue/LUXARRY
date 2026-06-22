@@ -16,6 +16,7 @@ export default function DiscoveryImage({
         src={src}
         alt={alt}
         fill
+        unoptimized
         priority={priority}
         sizes={sizes}
         className={clsx("object-cover transition-transform duration-500", imageClassName)}

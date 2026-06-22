@@ -3,8 +3,15 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import SectionFooterCTA from "@/components/ui/SectionFooterCTA";
 import StoryCard from "@/components/cards/StoryCard";
 import MotionSectionReveal from "@/components/motion/MotionSectionReveal";
+import { stories } from "@/data/stories";
 
 export default function HeritageLegacyStoriesSection({ content }) {
+  const featuredStory =
+  stories.find((story) => story.featured) || stories[0];
+
+const supportingStories = stories
+  .filter((story) => story.slug !== featuredStory.slug)
+  .slice(0, 2);
   return (
     <section
       aria-labelledby="heritage-stories-heading"
@@ -21,14 +28,14 @@ export default function HeritageLegacyStoriesSection({ content }) {
 
         <div className="mt-10 grid gap-8 lg:mt-14 lg:grid-cols-2">
           <MotionSectionReveal delay={0.1}>
-            <StoryCard story={content.featuredStory} featured />
+            <StoryCard story={featuredStory} featured />
           </MotionSectionReveal>
 
           <MotionSectionReveal delay={0.15}>
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-1">
-              {content.supportingStories.map((story) => (
-                <StoryCard key={story.slug} story={story} />
-              ))}
+              {supportingStories.map((story) => (
+  <StoryCard key={story.slug} story={story} />
+))}
             </div>
           </MotionSectionReveal>
         </div>

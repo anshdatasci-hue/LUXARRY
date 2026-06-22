@@ -18,9 +18,9 @@ const editorsPick = {
   title: "Luxury as Cultural Intelligence",
   summary:
     "A long-form perspective on how enduring houses translate heritage, restraint, craft, and imagination into cultural relevance.",
-  href: "/editorial/luxury-as-cultural-intelligence",
+  // href: "/editorial/luxury-as-cultural-intelligence",
   image: {
-    src: "https://picsum.photos/960/600?random=31",
+    src: "/images/editorial/editorials-pic.jpg",
     alt: "Editorial scene with archival materials, design references, and cultural objects",
   },
 };
@@ -31,9 +31,9 @@ const perspectiveArticles = [
     title: "Design Thinking in the Maison",
     summary:
       "How creative direction, proportion, material judgment, and restraint shape the identity of a luxury house.",
-    href: "/editorial/design-thinking-in-the-maison",
+    // href: "/editorial/design-thinking-in-the-maison",
     image: {
-      src: "https://picsum.photos/800/600?random=32",
+      src: "/images/editorial/thinking_maison.jpg",
       alt: "Design studio table with sketches and refined material samples",
     },
   },
@@ -44,7 +44,7 @@ const perspectiveArticles = [
       "A study of spaces where luxury is expressed through scale, silence, craft, and considered detail.",
     href: "/editorial/architecture-of-quiet-prestige",
     image: {
-      src: "https://picsum.photos/800/600?random=33",
+      src: "/images/editorial/prestige.jpg",
       alt: "Refined architectural interior with calm luxury details",
     },
   },
@@ -53,9 +53,9 @@ const perspectiveArticles = [
     title: "Creative Leadership & Continuity",
     summary:
       "Why the strongest creative directors interpret a house before they attempt to transform it.",
-    href: "/editorial/creative-leadership-and-continuity",
+    // href: "/editorial/creative-leadership-and-continuity",
     image: {
-      src: "https://picsum.photos/800/600?random=34",
+      src: "/images/editorial/creative.jpg",
       alt: "Editorial workspace representing creative leadership and heritage research",
     },
   },
@@ -64,9 +64,9 @@ const perspectiveArticles = [
     title: "Travel as Luxury Memory",
     summary:
       "From grand hotels to private journeys, travel has long shaped the rituals and symbols of luxury culture.",
-    href: "/editorial/travel-as-luxury-memory",
+    // href: "/editorial/travel-as-luxury-memory",
     image: {
-      src: "https://picsum.photos/800/600?random=35",
+      src: "/images/editorial/travel.jpg",
       alt: "Elegant travel setting with heritage luggage and architectural detail",
     },
   },
@@ -75,9 +75,9 @@ const perspectiveArticles = [
     title: "Art Patronage and the Modern Maison",
     summary:
       "How houses engage artists, museums, and cultural institutions to extend meaning beyond the atelier.",
-    href: "/editorial/art-patronage-and-modern-maison",
+    // href: "/editorial/art-patronage-and-modern-maison",
     image: {
-      src: "https://picsum.photos/800/600?random=36",
+      src: "/images/editorial/art-maison.jpg",
       alt: "Museum gallery scene connecting luxury houses with contemporary art",
     },
   },
@@ -86,9 +86,9 @@ const perspectiveArticles = [
     title: "The New Language of Rarity",
     summary:
       "Rarity today is less about scarcity alone and more about time, authorship, preservation, and cultural depth.",
-    href: "/editorial/the-new-language-of-rarity",
+    // href: "/editorial/the-new-language-of-rarity",
     image: {
-      src: "https://picsum.photos/800/600?random=37",
+      src: "/images/editorial/lang.jpg",
       alt: "Curated editorial still life of rare materials and archival references",
     },
   },
@@ -100,9 +100,9 @@ const cultureCraftArticles = [
     title: "Craftsmanship After Modernity",
     summary:
       "An essay on why handwork still matters in a world shaped by speed, systems, and digital precision.",
-    href: "/editorial/craftsmanship-after-modernity",
+    // href: "/editorial/craftsmanship-after-modernity",
     image: {
-      src: "https://picsum.photos/800/600?random=38",
+      src: "/images/editorial/craftman.jpg",
       alt: "Artisan hands working with refined tools in a modern atelier",
     },
   },
@@ -111,9 +111,9 @@ const cultureCraftArticles = [
     title: "Heritage Without Nostalgia",
     summary:
       "The maisons that endure are those able to treat history as a living discipline rather than a decorative mood.",
-    href: "/editorial/heritage-without-nostalgia",
+    // href: "/editorial/heritage-without-nostalgia",
     image: {
-      src: "https://picsum.photos/800/600?random=39",
+      src: "/images/editorial/cm2.jpg",
       alt: "Heritage archive with contemporary design references",
     },
   },
@@ -122,9 +122,9 @@ const cultureCraftArticles = [
     title: "The Cultural Influence of Savoir-Faire",
     summary:
       "How specialist knowledge shapes taste, preserves regional identity, and gives luxury its intellectual weight.",
-    href: "/editorial/cultural-influence-of-savoir-faire",
+    // href: "/editorial/cultural-influence-of-savoir-faire",
     image: {
-      src: "https://picsum.photos/800/600?random=40",
+      src: "/images/editorial/cm3.jpg",
       alt: "Traditional craft tools and materials arranged for editorial study",
     },
   },

@@ -14,7 +14,7 @@ export const experiencesContent = {
     href: "/experiences/rolex-timeline",
     experienceType: "timeline",
     image: {
-      src: "https://picsum.photos/800/600?random=3",
+      src: "/images/homepage/LUXURRY.jpg",
       alt: "Interactive timeline experience exploring Rolex horological heritage",
     },
   },

@@ -31,7 +31,7 @@ const featuredExperience = {
   href: "/experiences/inside-the-maison-archive",
   experienceType: "archive",
   image: {
-    src: "https://picsum.photos/960/600?random=41",
+    src: "/images/homepage/MAISON.jpg",
     alt: "Private luxury archive with sketches, ledgers, and heritage objects",
   },
 };
@@ -42,10 +42,10 @@ const curatedExperiences = [
     title: "A Morning in the Paris Atelier",
     summary:
       "Follow the rhythm of pattern tables, hand finishing, material review, and the disciplined calm of artisan work.",
-    href: "/experiences/paris-atelier-morning",
+    // href: "/experiences/paris-atelier-morning",
     experienceType: "atelier",
     image: {
-      src: "https://picsum.photos/800/600?random=42",
+      src: "/images/experiences/morning.jpg",
       alt: "Paris atelier table with fabric, sketches, and artisan tools",
     },
   },
@@ -54,10 +54,10 @@ const curatedExperiences = [
     title: "Grand Hotel Cultural Route",
     summary:
       "Trace the architecture, rituals, and social memory of landmark hotels that shaped luxury travel.",
-    href: "/experiences/grand-hotel-cultural-route",
+    // href: "/experiences/grand-hotel-cultural-route",
     experienceType: "journey",
     image: {
-      src: "https://picsum.photos/800/600?random=43",
+      src: "/images/experiences/hotel.jpg",
       alt: "Elegant heritage hotel interior with architectural detail",
     },
   },
@@ -66,10 +66,10 @@ const curatedExperiences = [
     title: "Goodwood Craft Perspective",
     summary:
       "An editorial look at bespoke automotive making, from wood veneer selection to hand-finished interiors.",
-    href: "/experiences/goodwood-craft-perspective",
+    // href: "/experiences/goodwood-craft-perspective",
     experienceType: "craft",
     image: {
-      src: "https://picsum.photos/800/600?random=44",
+      src: "/images/experiences/goodwood.jpg",
       alt: "Bespoke automotive interior craftsmanship and refined materials",
     },
   },
@@ -78,10 +78,10 @@ const curatedExperiences = [
     title: "Villa & Garden Heritage Walk",
     summary:
       "Explore the relationship between landscape, architecture, patronage, and the culture of private refinement.",
-    href: "/experiences/villa-and-garden-heritage-walk",
+    // href: "/experiences/villa-and-garden-heritage-walk",
     experienceType: "architecture",
     image: {
-      src: "https://picsum.photos/800/600?random=45",
+      src: "/images/experiences/villa.jpg",
       alt: "Historic villa and garden architecture for cultural discovery",
     },
   },
@@ -90,10 +90,10 @@ const curatedExperiences = [
     title: "Watchmaking Workbench Study",
     summary:
       "A close view of horological patience, precision, and the specialist knowledge behind mechanical time.",
-    href: "/experiences/watchmaking-workbench-study",
+    // href: "/experiences/watchmaking-workbench-study",
     experienceType: "craft",
     image: {
-      src: "https://picsum.photos/800/600?random=46",
+      src: "/images/experiences/making.jpg",
       alt: "Watchmaking workbench with tools and mechanical movement details",
     },
   },
@@ -102,10 +102,10 @@ const curatedExperiences = [
     title: "Heritage House City Map",
     summary:
       "Discover the addresses, ateliers, salons, and cultural sites that shaped enduring luxury houses.",
-    href: "/experiences/heritage-house-city-map",
+    // href: "/experiences/heritage-house-city-map",
     experienceType: "heritage",
     image: {
-      src: "https://picsum.photos/800/600?random=47",
+      src: "/images/experiences/heri.jpg",
       alt: "Historic city architecture connected to luxury heritage houses",
     },
   },
@@ -116,35 +116,35 @@ const immersiveJourneys = [
     slug: "private-archive-notes",
     title: "Private Archive Notes",
     experienceType: "archive",
-    href: "/experiences/private-archive-notes",
+    // href: "/experiences/private-archive-notes",
     status: "live",
   },
   {
     slug: "silk-atelier-encounter",
     title: "Silk Atelier Encounter",
     experienceType: "atelier",
-    href: "/experiences/silk-atelier-encounter",
+    // href: "/experiences/silk-atelier-encounter",
     status: "live",
   },
   {
     slug: "architecture-of-arrival",
     title: "Architecture of Arrival",
     experienceType: "architecture",
-    href: "/experiences/architecture-of-arrival",
+    // href: "/experiences/architecture-of-arrival",
     status: "live",
   },
   {
     slug: "craftsmanship-demonstration-series",
     title: "Craftsmanship Demonstration Series",
     experienceType: "craft",
-    href: "/experiences/craftsmanship-demonstration-series",
+    // href: "/experiences/craftsmanship-demonstration-series",
     status: "coming-soon",
   },
   {
     slug: "heritage-destination-journal",
     title: "Heritage Destination Journal",
     experienceType: "journey",
-    href: "/experiences/heritage-destination-journal",
+    // href: "/experiences/heritage-destination-journal",
     status: "live",
   },
 ];

@@ -12,7 +12,7 @@ export const editorialContent = {
       "How heritage maisons are embracing innovation while preserving the human touch that defines true luxury.",
     href: "/editorial/future-of-luxury",
     image: {
-      src: "https://picsum.photos/800/600?random=3",
+      src: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49",
       alt: "Modern luxury retail space blending heritage with contemporary design",
     },
   },
@@ -24,7 +24,7 @@ export const editorialContent = {
         "From pocket watches to perpetual calendars — a journey through horological innovation.",
       href: "/editorial/evolution-of-watchmaking",
       image: {
-        src: "https://picsum.photos/800/600?random=3",
+        src: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49",
         alt: "Classic timepiece representing the evolution of watchmaking",
       },
     },
@@ -35,7 +35,7 @@ export const editorialContent = {
         "The enduring elements that separate exceptional design from mere decoration.",
       href: "/editorial/luxury-design-principles",
       image: {
-        src: "https://picsum.photos/800/600?random=3",
+        src: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49",
         alt: "Minimalist luxury interior showcasing refined design principles",
       },
     },
@@ -46,7 +46,7 @@ export const editorialContent = {
         "How iconic brands shape art, fashion, and society far beyond their ateliers.",
       href: "/editorial/cultural-impact-of-luxury",
       image: {
-        src: "https://picsum.photos/800/600?random=3",
+        src: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49",
         alt: "Luxury fashion exhibition highlighting cultural influence",
       },
     },

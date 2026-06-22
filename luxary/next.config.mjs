@@ -6,8 +6,14 @@ const nextConfig = {
         protocol: "https",
         hostname: "picsum.photos",
       },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
     ],
   },
+
+  allowedDevOrigins: ["10.255.207.111"],
 };
 
 export default nextConfig;

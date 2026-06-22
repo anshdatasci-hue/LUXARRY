@@ -1,4 +1,4 @@
-import Link from "next/link";
+// import Link from "next/link";
 import DiscoveryImage from "@/components/ui/DiscoveryImage";
 import Badge from "@/components/ui/Badge";
 import MotionCardHover from "@/components/motion/MotionCardHover";
@@ -7,11 +7,9 @@ export default function ExperienceCard({ experience, typeLabel, featured = false
   return (
     <MotionCardHover>
       <article className="group h-full">
-        <Link
-          href={experience.href}
-          className="flex h-full flex-col focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
-          aria-label={`Explore experience: ${experience.title}`}
-        >
+        <div
+  className="flex h-full flex-col"
+>
           {experience.image && (
             <DiscoveryImage
               src={experience.image.src}
@@ -50,7 +48,7 @@ export default function ExperienceCard({ experience, typeLabel, featured = false
               Explore Experience
             </span>
           </div>
-        </Link>
+        </div>
       </article>
     </MotionCardHover>
   );

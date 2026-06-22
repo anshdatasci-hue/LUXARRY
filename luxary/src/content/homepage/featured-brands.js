@@ -13,7 +13,7 @@ export const featuredBrandsContent = {
         "A symbol of precision watchmaking and timeless design since 1905.",
       href: "/brands/rolex",
       image: {
-        src: "https://picsum.photos/800/600?random=3",
+        src: "/images/brands/rolex.jpg",
         alt: "Precision luxury watchmaking representing Rolex heritage",
       },
     },
@@ -24,7 +24,7 @@ export const featuredBrandsContent = {
         "From trunk-making pioneer to global icon of luxury fashion and craft.",
       href: "/brands/louis-vuitton",
       image: {
-        src: "https://picsum.photos/800/600?random=3",
+        src: "/images/brands/louis-vuitton.jpg",
         alt: "Luxury leather craftsmanship reflecting Louis Vuitton heritage",
       },
     },
@@ -35,7 +35,7 @@ export const featuredBrandsContent = {
         "Revolutionary haute couture and the art of French elegance since 1947.",
       href: "/brands/dior",
       image: {
-        src: "https://picsum.photos/800/600?random=3",
+        src: "/images/brands/dior.jpg",
         alt: "Haute couture fashion atelier embodying Dior elegance",
       },
     },
@@ -46,7 +46,7 @@ export const featuredBrandsContent = {
         "The pursuit of perfection in bespoke automotive engineering since 1904.",
       href: "/brands/rolls-royce",
       image: {
-        src: "https://picsum.photos/800/600?random=3",
+        src: "/images/brands/rolls-royce.jpg",
         alt: "Bespoke luxury automobile craftsmanship of Rolls-Royce",
       },
     },

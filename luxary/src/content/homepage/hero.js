@@ -8,7 +8,7 @@ export const heroContent = {
   primaryCTA: cta.exploreBrands,
   secondaryCTA: cta.exploreStories,
   visual: {
-    src: "https://picsum.photos/800/600?random=3",
+    src: "/images/homepage/maison2.jpg",
     alt: "Artisan hands crafting fine leather in a luxury workshop, embodying heritage and craftsmanship",
   },
   trustLayer: {

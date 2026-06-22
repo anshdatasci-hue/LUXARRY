@@ -14,7 +14,7 @@ export const craftsmanshipContent = {
         "Hundreds of components assembled by hand to measure time with extraordinary precision.",
       href: "/stories/evolution-of-watchmaking",
       image: {
-        src: "https://picsum.photos/800/600?random=3",
+        src: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49",
         alt: "Intricate mechanical watch movement showcasing haute horlogerie",
       },
     },
@@ -25,7 +25,7 @@ export const craftsmanshipContent = {
         "Saddle-stitching traditions passed through generations of artisan leather workers.",
       href: "/stories/art-of-leather-craft",
       image: {
-        src: "https://picsum.photos/800/600?random=3",
+        src: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49",
         alt: "Artisan hands stitching fine leather in a traditional atelier",
       },
     },
@@ -36,7 +36,7 @@ export const craftsmanshipContent = {
         "Gemstone selection, goldsmith techniques, and the pursuit of perfect proportions.",
       href: "/editorial/evolution-of-jewelry-craft",
       image: {
-        src: "https://picsum.photos/800/600?random=3",
+        src: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49",
         alt: "Fine jewelry creation with precious metals and gemstones",
       },
     },
@@ -47,7 +47,7 @@ export const craftsmanshipContent = {
         "Bespoke coachbuilding where engineering precision meets artistic vision.",
       href: "/stories/bespoke-automotive-craft",
       image: {
-        src: "https://picsum.photos/800/600?random=3",
+        src: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49",
         alt: "Luxury automotive engineering and bespoke coachbuilding craft",
       },
     },
