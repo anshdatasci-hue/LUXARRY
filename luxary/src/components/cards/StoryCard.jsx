@@ -12,18 +12,9 @@ export default function StoryCard({ story, featured = false }) {
           aria-label={`Read story: ${story.title}`}
         >
           <DiscoveryImage
-            // src={story.image.src}
-            // alt={story.image.alt}
-            src={story.image?.src || story.heroImage}
-            alt={story.image?.alt || story.alt || story.title}
-            aspectRatio={featured ? "aspect-[16/10]" : "aspect-[4/3]"}
-            sizes={
-              featured
-                ? "(max-width: 768px) 100vw, 60vw"
-                : "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            }
-            imageClassName="group-hover:scale-105"
-          />
+  src={story.image?.src || story.heroImage || story.hero_image}
+  alt={story.image?.alt || story.alt || story.title}
+/>
           <div className="flex flex-1 flex-col pt-5">
             <h3
               className={

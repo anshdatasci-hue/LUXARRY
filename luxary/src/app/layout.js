@@ -7,7 +7,8 @@ import { siteConfig } from "@/config/navigation";
 import { CartProvider } from "@/context/CartContext";
 import { WishlistProvider } from "@/context/WishlistContext";
 // import { CartProvider } from "@/context/CartContext";
-import { ToastProvider } from "@/context/ToastContext";
+// import { ToastProvider } from "@/context/ToastContext";
+import { AuthProvider } from "@/context/AuthContext";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -56,16 +57,18 @@ export default function RootLayout({ children }) {
       className={`${cormorant.variable} ${dmSans.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-foreground">
-        <CartProvider>
-          <WishlistProvider>
-            <ToastProvider>
+        <AuthProvider>
+          <CartProvider>
+            <WishlistProvider>
+              {/* <ToastProvider> */}
               <SkipLink />
               <SiteHeader />
               <main id="main-content">{children}</main>
               <SiteFooter />
-            </ToastProvider>
-          </WishlistProvider>
-        </CartProvider>
+              {/* </ToastProvider> */}
+            </WishlistProvider>
+          </CartProvider>
+        </AuthProvider>
       </body>
     </html>
   );

@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import brands from "@/data/brands";
+import { supabase } from "@/lib/supabase";
 import { featuredProducts } from "@/data/products";
 import ProductCard from "@/components/products/ProductCard";
 import Link from "next/link";
@@ -7,21 +7,38 @@ import Link from "next/link";
 export default async function BrandPage({ params }) {
   const { slug } = await params;
 
-  const brand = brands.find((item) => item.slug === slug);
+  // Brand from Supabase
+  const { data: brand, error } = await supabase
+    .from("brands")
+    .select("*")
+    .eq("slug", slug)
+    .single();
 
-  if (!brand) {
+  if (error || !brand) {
     notFound();
   }
 
+  // Milestones from Supabase
+  const { data: milestones, error: milestoneError } = await supabase
+    .from("brand_milestones")
+    .select("*")
+    .eq("brand_slug", slug)
+    .order("year");
+
+  // Products still from local file
   const brandProducts = featuredProducts.filter(
     (product) => product.brand === brand.name,
   );
 
-  const relatedBrands = brands
-    .filter(
-      (item) => item.slug !== brand.slug && item.category === brand.category,
-    )
-    .slice(0, 4);
+  // Related brands from Supabase
+  const { data: relatedBrands } = await supabase
+    .from("brands")
+    .select("*")
+    .eq("category", brand.category)
+    .neq("slug", brand.slug)
+    .limit(4);
+  console.log("BRAND:", brand.slug);
+  console.log("MILESTONES:", milestones);
 
   return (
     <main className="min-h-screen bg-white">
@@ -41,7 +58,7 @@ export default async function BrandPage({ params }) {
         <div className="mt-16 grid lg:grid-cols-2 gap-16 items-start">
           <div>
             <img
-              src={brand.heroImage}
+              src={brand.hero_image}
               alt={brand.name}
               className="w-full aspect-[4/5] object-cover"
             />
@@ -117,9 +134,9 @@ export default async function BrandPage({ params }) {
           </p>
 
           <div className="space-y-12">
-            {brand.milestones.map((milestone) => (
+            {milestones?.map((milestone) => (
               <div
-                key={`${milestone.year}-${milestone.title}`}
+                key={milestone.id}
                 className="flex gap-10 border-l border-neutral-300 pl-8"
               >
                 <div className="min-w-[80px] text-neutral-500">
@@ -160,7 +177,7 @@ export default async function BrandPage({ params }) {
           <h2 className="text-4xl font-light mb-16">Discover More Houses</h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {relatedBrands.map((related) => (
+            {relatedBrands?.map((related) => (
               <Link
                 key={related.slug}
                 href={`/brands/${related.slug}`}

@@ -8,13 +8,13 @@ export default function ProductGallery({ images }) {
 
   return (
     <div className="space-y-4">
-      <div className="relative h-[700px] overflow-hidden rounded-2xl">
+      <div className="relative h-[700px] overflow-hidden rounded-2xl z-0">
         <Image
-          src={images[selected]}
-          alt=""
-          fill
-          className="object-cover"
-        />
+  src={images[selected]}
+  alt=""
+  fill
+  className="object-cover pointer-events-none"
+/>
       </div>
 
       <div className="flex gap-3">
@@ -29,11 +29,11 @@ export default function ProductGallery({ images }) {
             }`}
           >
             <Image
-              src={image}
-              alt=""
-              fill
-              className="object-cover"
-            />
+  src={image}
+  alt=""
+  fill
+  className="object-cover pointer-events-none"
+/>
           </button>
         ))}
       </div>

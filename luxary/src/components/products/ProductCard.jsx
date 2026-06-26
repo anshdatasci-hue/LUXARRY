@@ -7,6 +7,7 @@ import { useWishlist } from "@/context/WishlistContext";
 
 export default function ProductCard({ product }) {
   const { addToWishlist, isInWishlist } = useWishlist();
+  // console.log("WISHLIST CONTEXT:", useWishlist());
   return (
     <div className="group overflow-hidden rounded-2xl border border-neutral-200 bg-white transition-all duration-300 hover:shadow-xl">
       

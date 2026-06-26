@@ -5,6 +5,9 @@ import { createContext, useContext, useEffect, useState } from "react";
 const WishlistContext = createContext();
 
 export function WishlistProvider({ children }) {
+  useEffect(() => {
+  // console.log("WISHLIST PROVIDER MOUNTED");
+}, []);
   const [wishlistItems, setWishlistItems] = useState([]);
 
   useEffect(() => {
@@ -23,14 +26,16 @@ export function WishlistProvider({ children }) {
   }, [wishlistItems]);
 
   const addToWishlist = (product) => {
-    const exists = wishlistItems.find(
-      (item) => item.id === product.id
-    );
+  // console.log("ADDING TO WISHLIST", product);
 
-    if (exists) return;
+  const exists = wishlistItems.find(
+    (item) => item.id === product.id
+  );
 
-    setWishlistItems((prev) => [...prev, product]);
-  };
+  if (exists) return;
+
+  setWishlistItems((prev) => [...prev, product]);
+};
 
   const removeFromWishlist = (id) => {
     setWishlistItems((prev) =>

@@ -1,51 +1,5 @@
 import Link from "next/link";
-import brands from "@/data/brands";
-
-// const brands = [
-//   {
-//     name: "Rolex",
-//     category: "Swiss Watchmaking",
-//     description: "A symbol of precision, innovation, and timeless prestige.",
-//   },
-//   {
-//     name: "Patek Philippe",
-//     category: "Haute Horlogerie",
-//     description:
-//       "Generations of craftsmanship and some of the world's most sought-after timepieces.",
-//   },
-//   {
-//     name: "Cartier",
-//     category: "Jewelry & Watches",
-//     description:
-//       "Parisian elegance expressed through iconic jewelry and watchmaking.",
-//   },
-//   {
-//     name: "Louis Vuitton",
-//     category: "Fashion & Leather Goods",
-//     description:
-//       "Travel heritage transformed into one of the world's leading luxury houses.",
-//   },
-//   {
-//     name: "Hermès",
-//     category: "Leather Goods & Fashion",
-//     description: "Exceptional craftsmanship rooted in equestrian heritage.",
-//   },
-//   {
-//     name: "Ferrari",
-//     category: "Automotive",
-//     description: "Performance, racing heritage, and Italian excellence.",
-//   },
-//   {
-//     name: "Rolls-Royce",
-//     category: "Automotive",
-//     description: "The pinnacle of handcrafted luxury motoring.",
-//   },
-//   {
-//     name: "Dior",
-//     category: "Fashion",
-//     description: "A house that continues to define modern luxury and couture.",
-//   },
-// ];
+import { supabase } from "@/lib/supabase";
 
 export const metadata = {
   title: "Brands | Luxary",
@@ -53,7 +7,21 @@ export const metadata = {
     "Discover the world's most iconic luxury maisons and their heritage.",
 };
 
-export default function BrandsPage() {
+export default async function BrandsPage() {
+  const { data: brands, error } = await supabase
+    .from("brands")
+    .select("*")
+    .order("name");
+
+  if (error) {
+    return (
+      <main className="mx-auto max-w-7xl px-6 py-20">
+        <h1 className="text-3xl">Database Error</h1>
+        <p className="mt-4 text-red-500">{error.message}</p>
+      </main>
+    );
+  }
+
   return (
     <main className="mx-auto max-w-7xl px-6 py-20">
       <div className="max-w-3xl">
@@ -71,10 +39,7 @@ export default function BrandsPage() {
 
       <div className="mt-20 grid gap-12 md:grid-cols-2">
         {brands.map((brand) => (
-          <article
-            key={brand.name}
-            className="border-t border-neutral-200 pt-8"
-          >
+          <article key={brand.id} className="border-t border-neutral-200 pt-8">
             <p className="text-xs uppercase tracking-[0.25em] text-neutral-500">
               {brand.category}
             </p>

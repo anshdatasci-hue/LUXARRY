@@ -10,6 +10,7 @@ import PersonalizationSection from "@/components/homepage/PersonalizationSection
 import { homepageContent } from "@/content/homepage";
 import { siteConfig } from "@/config/navigation";
 import FeaturedProducts from "@/components/homepage/FeaturedProducts";
+import { getCurrentUser } from "@/lib/auth/user";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -29,7 +30,9 @@ const jsonLd = {
   ],
 };
 
-export default function Home() {
+export default async function Home() {
+  const user = await getCurrentUser();
+
   const {
     hero,
     featuredBrands,

@@ -8,7 +8,6 @@ export const primaryNavItems = [
 
 export const secondaryNavItems = [
   { label: "Search", href: "/search", variant: "search" },
-  { label: "Sign In", href: "/sign-in", variant: "auth" },
 ];
 
 export const footerExploreLinks = [

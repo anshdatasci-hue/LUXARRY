@@ -2,12 +2,41 @@ import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import MotionSectionReveal from "@/components/motion/MotionSectionReveal";
+import { signUp } from "@/lib/auth/actions";
 
 export const metadata = {
   title: "Create Your Account | Luxary",
   description:
     "Join Luxary to discover curated brands, save stories, explore editorial content, and revisit immersive experiences.",
 };
+
+async function handleSignUp(formData) {
+  "use server";
+
+  const fullName = formData.get("name");
+  const email = formData.get("email");
+  const password = formData.get("password");
+
+  console.log({
+    fullName,
+    email,
+    password,
+    emailType: typeof email,
+  });
+
+  const { error } = await signUp({
+    fullName,
+    email,
+    password,
+  });
+
+  console.log(error);
+
+  if (error) {
+    console.error(error);
+    return;
+  }
+}
 
 export default function SignUpPage() {
   return (
@@ -37,7 +66,7 @@ export default function SignUpPage() {
         <Container>
           <MotionSectionReveal>
             <div className="mx-auto max-w-xl rounded-sm border border-foreground/10 bg-background p-6 sm:p-8 lg:p-10">
-              <form className="space-y-6">
+              <form action={handleSignUp} className="space-y-6">
                 <div>
                   <label
                     htmlFor="name"
@@ -89,7 +118,7 @@ export default function SignUpPage() {
                   />
                 </div>
 
-                <Button className="w-full" variant="primary">
+                <Button type="submit" className="w-full" variant="primary">
                   Create Account
                 </Button>
               </form>

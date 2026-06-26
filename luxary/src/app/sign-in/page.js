@@ -2,12 +2,35 @@ import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import MotionSectionReveal from "@/components/motion/MotionSectionReveal";
+import { signIn } from "@/lib/auth/actions";
+import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 
 export const metadata = {
   title: "Sign In | Luxary",
   description:
     "Access your personalized Luxary experience, saved stories, editorial perspectives, and immersive discoveries.",
 };
+
+async function handleSignIn(formData) {
+  "use server";
+
+  const email = formData.get("email");
+  const password = formData.get("password");
+
+  const { error } = await signIn({
+    email,
+    password,
+  });
+
+  if (error) {
+    console.log(error);
+    return;
+  }
+
+  revalidatePath("/", "layout");
+  redirect("/");
+}
 
 export default function SignInPage() {
   return (
@@ -37,7 +60,7 @@ export default function SignInPage() {
         <Container>
           <MotionSectionReveal>
             <div className="mx-auto max-w-xl rounded-sm border border-foreground/10 bg-background p-6 sm:p-8 lg:p-10">
-              <form className="space-y-6">
+              <form action={handleSignIn} className="space-y-6">
                 <div>
                   <label
                     htmlFor="email"
@@ -72,9 +95,12 @@ export default function SignInPage() {
                   />
                 </div>
 
-                <Button className="w-full" variant="primary">
+                <button
+                  type="submit"
+                  className="w-full rounded-sm bg-black py-3 text-white"
+                >
                   Sign In
-                </Button>
+                </button>
               </form>
             </div>
           </MotionSectionReveal>

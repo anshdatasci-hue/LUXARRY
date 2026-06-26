@@ -1,10 +1,13 @@
 import { notFound } from "next/navigation";
-import { stories } from "@/data/stories";
+import { supabase } from "@/lib/supabase";
+import { getStory, getStories } from "@/lib/stories";
 import StoryCard from "@/components/cards/StoryCard";
 import ReadingProgressBar from "@/components/stories/ReadingProgressBar";
 
 export async function generateStaticParams() {
-  return stories.map((story) => ({
+  const { data } = await supabase.from("stories").select("slug");
+
+  return (data ?? []).map((story) => ({
     slug: story.slug,
   }));
 }
@@ -12,7 +15,11 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const { slug } = await params;
 
-  const story = stories.find((item) => item.slug === slug);
+  const { data: story } = await supabase
+    .from("stories")
+    .select("title, summary")
+    .eq("slug", slug)
+    .single();
 
   if (!story) {
     return {
@@ -29,13 +36,15 @@ export async function generateMetadata({ params }) {
 export default async function StoryPage({ params }) {
   const { slug } = await params;
 
-  const story = stories.find((item) => item.slug === slug);
+  const story = await getStory(slug);
 
   if (!story) {
     notFound();
   }
 
-  const relatedStories = stories
+  const allStories = await getStories();
+
+  const relatedStories = allStories
     .filter(
       (item) => item.category === story.category && item.slug !== story.slug,
     )
@@ -63,7 +72,11 @@ export default async function StoryPage({ params }) {
           className="h-full w-full object-cover"
         /> */}
 
-        <img src={story.heroImage} alt={story.alt} />
+        <img
+          src={story.hero_image}
+          alt={story.alt}
+          className="h-full w-full object-cover"
+        />
 
         <div className="absolute inset-0 bg-black/40" />
 
@@ -83,8 +96,8 @@ export default async function StoryPage({ params }) {
       <section className="border-b border-neutral-200">
         <div className="max-w-4xl mx-auto px-6 py-8 flex flex-wrap gap-6 text-sm text-neutral-600">
           <span>{story.author}</span>
-          <span>{story.publishedAt}</span>
-          <span>{story.readTime}</span>
+          <span>{story.published_at}</span>
+          <span>{story.read_time}</span>
         </div>
       </section>
 

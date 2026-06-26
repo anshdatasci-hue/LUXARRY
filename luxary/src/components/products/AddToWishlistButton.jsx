@@ -3,16 +3,20 @@
 import { useWishlist } from "@/context/WishlistContext";
 
 export default function AddToWishlistButton({ product }) {
-  const { addToWishlist, isInWishlist } = useWishlist();
+  const wishlist = useWishlist();
+
+  // console.log("WISHLIST HOOK:", wishlist);
 
   return (
     <button
-      onClick={() => addToWishlist(product)}
-      className="mt-4 rounded-full border px-6 py-3 text-sm transition hover:bg-black hover:text-white"
+      onClick={() => {
+        // alert("WISHLIST CLICKED");
+
+        wishlist.addToWishlist(product);
+      }}
+      className="mt-4 rounded-full border px-6 py-3"
     >
-      {isInWishlist(product.id)
-        ? "♥ Saved to Wishlist"
-        : "♡ Add to Wishlist"}
+      Add To Wishlist
     </button>
   );
 }

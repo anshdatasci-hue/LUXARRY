@@ -14,6 +14,7 @@ import {
 
 import { useCart } from "@/context/CartContext";
 import { useWishlist } from "@/context/WishlistContext";
+import { signOut } from "@/lib/auth/actions";
 
 function SearchIcon() {
   return (
@@ -35,7 +36,7 @@ function SearchIcon() {
   );
 }
 
-export default function SiteHeader() {
+export default function SiteHeader({ user }) {
   const { cartItems } = useCart();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
@@ -129,7 +130,40 @@ export default function SiteHeader() {
 <Link href="/wishlist">
   Wishlist ({wishlistItems.length})
 </Link>
+{user ? (
+  <>
+    <span className="text-sm text-foreground">
+      Welcome, {user.user_metadata?.full_name || user.email}
+    </span>
+
+    <form action={signOut}>
+      <button
+        type="submit"
+        className="text-sm text-muted transition-colors hover:text-foreground"
+      >
+        Sign Out
+      </button>
+    </form>
+  </>
+) : (
+  <>
+    <Link
+      href="/sign-in"
+      className="text-sm text-muted transition-colors hover:text-foreground"
+    >
+      Sign In
+    </Link>
+
+    <Link
+      href="/sign-up"
+      className="text-sm text-muted transition-colors hover:text-foreground"
+    >
+      Create Account
+    </Link>
+  </>
+)}
 </div>
+
 
           <button
             type="button"
