@@ -205,17 +205,10 @@ export default function SiteHeader() {
 
       <AnimatePresence>
         {isMobileOpen && (
-          <m.div
-            id="mobile-navigation"
-            role="dialog"
-            aria-modal="true"
-            aria-label="Mobile navigation"
-            initial={shouldReduceMotion ? false : { opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={shouldReduceMotion ? undefined : { opacity: 0, height: 0 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            className="overflow-hidden border-t border-border bg-background lg:hidden"
-          >
+  <div
+    id="mobile-navigation"
+    className="border-t border-border bg-background lg:hidden"
+  >
             <Container className="py-6">
               <nav aria-label="Primary mobile">
                 <ul className="space-y-1">
@@ -302,7 +295,7 @@ export default function SiteHeader() {
 
 </div>
             </Container>
-          </m.div>
+          </div>
         )}
       </AnimatePresence>
     </header>
