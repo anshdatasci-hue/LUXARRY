@@ -204,99 +204,83 @@ export default function SiteHeader() {
       </Container>
 
       <AnimatePresence>
-        {isMobileOpen && (
+       {isMobileOpen && (
   <div
     id="mobile-navigation"
-    className="border-t border-border bg-background lg:hidden"
+    className="fixed inset-0 z-[9999] bg-background lg:hidden"
   >
-            <Container className="py-6">
-              <nav aria-label="Primary mobile">
-                <ul className="space-y-1">
-                  {primaryNavItems.map((item) => (
-                    <li key={item.href}>
-                      <Link
-                        href={item.href}
-                        className="block py-3 text-base tracking-wide text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-                      >
-                        {item.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-              <div className="mt-6 border-t border-border pt-6 space-y-4">
+    <Container className="flex h-full flex-col pt-24 pb-8">
 
-  <nav aria-label="Utility mobile">
-    <ul className="space-y-4">
-      {secondaryNavItems.map((item) => (
-        <li key={item.href}>
+      {/* Primary Navigation */}
+      <nav aria-label="Primary mobile">
+        <ul className="space-y-5">
+          {primaryNavItems.map((item) => (
+            <li key={item.href}>
+              <Link
+                href={item.href}
+                className="block text-2xl font-medium text-foreground"
+              >
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      {/* Utility Navigation */}
+      <div className="mt-10 border-t border-border pt-8 space-y-5">
+
+        {secondaryNavItems.map((item) => (
           <Link
+            key={item.href}
             href={item.href}
-            className="flex items-center gap-2 text-base text-muted"
+            className="flex items-center gap-2 text-lg text-muted"
           >
             {item.variant === "search" && <SearchIcon />}
             {item.label}
           </Link>
-        </li>
-      ))}
-    </ul>
-  </nav>
+        ))}
 
-  <div className="border-t border-border pt-4 space-y-4">
-
-    <Link
-      href="/cart"
-      className="block text-base"
-    >
-      Cart ({cartItems.length})
-    </Link>
-
-    <Link
-      href="/wishlist"
-      className="block text-base"
-    >
-      Wishlist ({wishlistItems.length})
-    </Link>
-
-    {user ? (
-      <>
-        <p className="text-base">
-          Welcome, {user.user_metadata?.full_name || user.email}
-        </p>
-
-        <form action={signOut}>
-          <button
-            type="submit"
-            className="text-base"
-          >
-            Sign Out
-          </button>
-        </form>
-      </>
-    ) : (
-      <>
-        <Link
-          href="/sign-in"
-          className="block text-base"
-        >
-          Sign In
+        <Link href="/cart" className="block text-lg">
+          Cart ({cartItems.length})
         </Link>
 
-        <Link
-          href="/sign-up"
-          className="block text-base"
-        >
-          Create Account
+        <Link href="/wishlist" className="block text-lg">
+          Wishlist ({wishlistItems.length})
         </Link>
-      </>
-    )}
 
-  </div>
+        {user ? (
+          <>
+            <p className="text-lg">
+              Welcome, {user.user_metadata?.full_name || user.email}
+            </p>
 
-</div>
-            </Container>
-          </div>
+            <form action={signOut}>
+              <button
+                type="submit"
+                className="text-lg text-left"
+              >
+                Sign Out
+              </button>
+            </form>
+          </>
+        ) : (
+          <>
+            <Link href="/sign-in" className="block text-lg">
+              Sign In
+            </Link>
+
+            <Link href="/sign-up" className="block text-lg">
+              Create Account
+            </Link>
+          </>
         )}
+
+      </div>
+
+    </Container>
+  </div>
+)}
       </AnimatePresence>
     </header>
   );
