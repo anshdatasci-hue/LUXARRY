@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useCart } from "@/context/CartContext";
 import { useRouter } from "next/navigation";
+import { placeOrder } from "@/lib/orders/actions";
 
 export default function CheckoutPage() {
   const { cartItems } = useCart();
@@ -17,49 +18,39 @@ export default function CheckoutPage() {
   const [postalCode, setPostalCode] = useState("");
   const [country, setCountry] = useState("");
 
-  const handlePlaceOrder = () => {
+  const handlePlaceOrder = async () => {
     if (cartItems.length === 0) {
       alert("Your cart is empty");
       return;
     }
 
-    if (!name.trim()) {
-      alert("Please enter your name");
-      return;
-    }
+    if (!name.trim()) return alert("Please enter your name");
+    if (!email.trim()) return alert("Please enter your email");
+    if (!phone.trim()) return alert("Please enter your phone number");
+    if (!address.trim()) return alert("Please enter your address");
+    if (!city.trim()) return alert("Please enter your city");
+    if (!state.trim()) return alert("Please enter your state");
+    if (!postalCode.trim()) return alert("Please enter your postal code");
+    if (!country.trim()) return alert("Please enter your country");
 
-    if (!email.trim()) {
-      alert("Please enter your email");
-      return;
-    }
+    const success = await placeOrder({
+      name,
+      email,
+      phone,
+      address,
+      city,
+      state,
+      postalCode,
+      country,
+      items: cartItems,
+      total: cartItems.reduce(
+        (total, item) => total + item.price * item.quantity,
+        0,
+      ),
+    });
 
-    if (!phone.trim()) {
-      alert("Please enter your phone number");
-      return;
-    }
-
-    if (!address.trim()) {
-      alert("Please enter your address");
-      return;
-    }
-
-    if (!city.trim()) {
-      alert("Please enter your city");
-      return;
-    }
-
-    if (!state.trim()) {
-      alert("Please enter your state");
-      return;
-    }
-
-    if (!postalCode.trim()) {
-      alert("Please enter your postal code");
-      return;
-    }
-
-    if (!country.trim()) {
-      alert("Please enter your country");
+    if (!success) {
+      alert("Failed to place order.");
       return;
     }
 

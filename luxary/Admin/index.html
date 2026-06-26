@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Luxary Admin Login</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family:
+          Segoe UI,
+          Tahoma,
+          Geneva,
+          Verdana,
+          sans-serif;
+      }
+
+      body {
+        background: #0b0b0b;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+      }
+
+      .card {
+        width: 400px;
+        background: #151515;
+        border: 1px solid #2a2a2a;
+        border-radius: 18px;
+        padding: 45px;
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+      }
+
+      .logo {
+        font-size: 38px;
+        text-align: center;
+        font-weight: 300;
+        letter-spacing: 4px;
+        color: #d8b46a;
+      }
+
+      .sub {
+        text-align: center;
+        color: #9a9a9a;
+        margin-top: 10px;
+        margin-bottom: 40px;
+      }
+
+      input {
+        width: 100%;
+        padding: 15px;
+        border: none;
+        outline: none;
+        border-radius: 10px;
+        background: #202020;
+        color: white;
+        font-size: 16px;
+      }
+
+      button {
+        width: 100%;
+        margin-top: 25px;
+        padding: 15px;
+        border: none;
+        border-radius: 10px;
+        background: #d8b46a;
+        color: black;
+        font-size: 16px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+
+      button:hover {
+        background: #e8c77d;
+      }
+
+      #error {
+        margin-top: 18px;
+        text-align: center;
+        color: #ff6b6b;
+        display: none;
+      }
+
+      .footer {
+        margin-top: 35px;
+        text-align: center;
+        color: #666;
+        font-size: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="logo">LUXARY</div>
+
+      <div class="sub">Admin Dashboard</div>
+
+      <input type="password" id="password" placeholder="Enter Admin Password" />
+
+      <button onclick="login()">Login</button>
+
+      <div id="error">Incorrect Password</div>
+
+      <div class="footer">Authorized Personnel Only</div>
+    </div>
+
+    <script>
+      function login() {
+        const password = document.getElementById("password").value;
+
+        if (password === "admin@123") {
+          window.location.href = "http://localhost:3000/admin";
+        } else {
+          document.getElementById("error").style.display = "block";
+        }
+      }
+
+      document
+        .getElementById("password")
+        .addEventListener("keypress", function (e) {
+          if (e.key === "Enter") {
+            login();
+          }
+        });
+    </script>
+  </body>
+</html>

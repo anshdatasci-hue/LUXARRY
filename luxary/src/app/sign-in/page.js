@@ -4,7 +4,7 @@ import Container from "@/components/ui/Container";
 import MotionSectionReveal from "@/components/motion/MotionSectionReveal";
 import { signIn } from "@/lib/auth/actions";
 import { redirect } from "next/navigation";
-import { revalidatePath } from "next/cache";
+import ReloadButton from "./ReloadButton";
 
 export const metadata = {
   title: "Sign In | Luxary",
@@ -24,15 +24,15 @@ async function handleSignIn(formData) {
   });
 
   if (error) {
-    console.log(error);
-    return;
+    redirect("/sign-in?error=1");
   }
 
-  revalidatePath("/", "layout");
-  redirect("/");
+  redirect("/?success=login");
 }
 
-export default function SignInPage() {
+export default async function SignInPage({ searchParams }) {
+  const params = await searchParams;
+  const error = params?.error;
   return (
     <div className="flex flex-col">
       <section className="bg-background py-20 sm:py-24 lg:py-28">
@@ -60,6 +60,11 @@ export default function SignInPage() {
         <Container>
           <MotionSectionReveal>
             <div className="mx-auto max-w-xl rounded-sm border border-foreground/10 bg-background p-6 sm:p-8 lg:p-10">
+              {error && (
+                <div className="rounded-sm border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-700">
+                  Login failed. Invalid email or password.
+                </div>
+              )}
               <form action={handleSignIn} className="space-y-6">
                 <div>
                   <label
@@ -95,12 +100,7 @@ export default function SignInPage() {
                   />
                 </div>
 
-                <button
-                  type="submit"
-                  className="w-full rounded-sm bg-black py-3 text-white"
-                >
-                  Sign In
-                </button>
+                <ReloadButton />
               </form>
             </div>
           </MotionSectionReveal>

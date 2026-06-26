@@ -14,6 +14,7 @@ import {
 
 import { useCart } from "@/context/CartContext";
 import { useWishlist } from "@/context/WishlistContext";
+import { useAuth } from "@/context/AuthContext";
 import { signOut } from "@/lib/auth/actions";
 
 function SearchIcon() {
@@ -36,13 +37,14 @@ function SearchIcon() {
   );
 }
 
-export default function SiteHeader({ user }) {
+export default function SiteHeader() {
   const { cartItems } = useCart();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const pathname = usePathname();
   const shouldReduceMotion = useReducedMotion();
   const { wishlistItems } = useWishlist();
+  const { user } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);

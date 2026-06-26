@@ -11,6 +11,7 @@ import { homepageContent } from "@/content/homepage";
 import { siteConfig } from "@/config/navigation";
 import FeaturedProducts from "@/components/homepage/FeaturedProducts";
 import { getCurrentUser } from "@/lib/auth/user";
+import HomeReload from "@/components/auth/HomeReload";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -51,6 +52,7 @@ export default async function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <HomepageLayout>
+        <HomeReload />
         <HeroSection content={hero} />
         <FeaturedProducts />
         <FeaturedBrandsSection content={featuredBrands} />
