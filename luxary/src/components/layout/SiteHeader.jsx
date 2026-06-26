@@ -170,7 +170,10 @@ export default function SiteHeader() {
           <button
             type="button"
             className="flex h-11 w-11 items-center justify-center rounded-sm text-foreground lg:hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-            onClick={() => setIsMobileOpen((open) => !open)}
+            onClick={() => {
+  console.log("clicked");
+  setIsMobileOpen((open) => !open);
+}}
             aria-expanded={isMobileOpen}
             aria-controls="mobile-navigation"
             aria-label={isMobileOpen ? "Close menu" : "Open menu"}
@@ -228,23 +231,76 @@ export default function SiteHeader() {
                   ))}
                 </ul>
               </nav>
-              <div className="mt-6 border-t border-border pt-6">
-                <nav aria-label="Utility mobile">
-                  <ul className="flex gap-6">
-                    {secondaryNavItems.map((item) => (
-                      <li key={item.href}>
-                        <Link
-                          href={item.href}
-                          className="flex items-center gap-2 text-sm tracking-wide text-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-                        >
-                          {item.variant === "search" && <SearchIcon />}
-                          {item.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </nav>
-              </div>
+              <div className="mt-6 border-t border-border pt-6 space-y-4">
+
+  <nav aria-label="Utility mobile">
+    <ul className="space-y-4">
+      {secondaryNavItems.map((item) => (
+        <li key={item.href}>
+          <Link
+            href={item.href}
+            className="flex items-center gap-2 text-base text-muted"
+          >
+            {item.variant === "search" && <SearchIcon />}
+            {item.label}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  </nav>
+
+  <div className="border-t border-border pt-4 space-y-4">
+
+    <Link
+      href="/cart"
+      className="block text-base"
+    >
+      Cart ({cartItems.length})
+    </Link>
+
+    <Link
+      href="/wishlist"
+      className="block text-base"
+    >
+      Wishlist ({wishlistItems.length})
+    </Link>
+
+    {user ? (
+      <>
+        <p className="text-base">
+          Welcome, {user.user_metadata?.full_name || user.email}
+        </p>
+
+        <form action={signOut}>
+          <button
+            type="submit"
+            className="text-base"
+          >
+            Sign Out
+          </button>
+        </form>
+      </>
+    ) : (
+      <>
+        <Link
+          href="/sign-in"
+          className="block text-base"
+        >
+          Sign In
+        </Link>
+
+        <Link
+          href="/sign-up"
+          className="block text-base"
+        >
+          Create Account
+        </Link>
+      </>
+    )}
+
+  </div>
+
+</div>
             </Container>
           </m.div>
         )}
