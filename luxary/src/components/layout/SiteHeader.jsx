@@ -16,6 +16,7 @@ import { useCart } from "@/context/CartContext";
 import { useWishlist } from "@/context/WishlistContext";
 import { useAuth } from "@/context/AuthContext";
 import { signOut } from "@/lib/auth/actions";
+import MobileMenu from "@/components/layout/MobileMenu";
 
 function SearchIcon() {
   return (
@@ -64,10 +65,19 @@ export default function SiteHeader() {
     };
   }, [isMobileOpen]);
 
+  // console.log("SiteHeader state:", isMobileOpen);
+
+  useEffect(() => {
+  document.body.style.overflow = isMobileOpen ? "hidden" : "";
+  return () => {
+    document.body.style.overflow = "";
+  };
+}, [isMobileOpen]);
+
   return (
     <header
       className={clsx(
-        "sticky top-0 z-50 transition-colors duration-300",
+        "sticky top-0 z-[9999] transition-colors duration-300",
         isScrolled
           ? "border-b border-border bg-background/95 backdrop-blur-md"
           : "bg-background/80 backdrop-blur-sm",
@@ -168,120 +178,22 @@ export default function SiteHeader() {
 
 
           <button
-            type="button"
-            className="flex h-11 w-11 items-center justify-center rounded-sm text-foreground lg:hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-            onClick={() => {
-  console.log("clicked");
-  setIsMobileOpen((open) => !open);
-}}
-            aria-expanded={isMobileOpen}
-            aria-controls="mobile-navigation"
-            aria-label={isMobileOpen ? "Close menu" : "Open menu"}
-          >
-            <span className="sr-only">{isMobileOpen ? "Close" : "Menu"}</span>
-            <div className="flex w-5 flex-col gap-1.5">
-              <span
-                className={clsx(
-                  "block h-px w-full bg-foreground transition-transform duration-200",
-                  isMobileOpen && "translate-y-[7px] rotate-45",
-                )}
-              />
-              <span
-                className={clsx(
-                  "block h-px w-full bg-foreground transition-opacity duration-200",
-                  isMobileOpen && "opacity-0",
-                )}
-              />
-              <span
-                className={clsx(
-                  "block h-px w-full bg-foreground transition-transform duration-200",
-                  isMobileOpen && "-translate-y-[7px] -rotate-45",
-                )}
-              />
-            </div>
-          </button>
+  type="button"
+  className="flex h-11 w-11 items-center justify-center lg:hidden"
+  onClick={() => {
+    // alert("CLICKED");
+    // console.log("CLICKED");
+    setIsMobileOpen((prev) => !prev);
+  }}
+>
+  ☰
+</button>
         </div>
       </Container>
-
-      <AnimatePresence>
-       {isMobileOpen && (
-  <div
-    id="mobile-navigation"
-    className="fixed inset-0 z-[9999] bg-background lg:hidden"
-  >
-    <Container className="flex h-full flex-col pt-24 pb-8">
-
-      {/* Primary Navigation */}
-      <nav aria-label="Primary mobile">
-        <ul className="space-y-5">
-          {primaryNavItems.map((item) => (
-            <li key={item.href}>
-              <Link
-                href={item.href}
-                className="block text-2xl font-medium text-foreground"
-              >
-                {item.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
-
-      {/* Utility Navigation */}
-      <div className="mt-10 border-t border-border pt-8 space-y-5">
-
-        {secondaryNavItems.map((item) => (
-          <Link
-            key={item.href}
-            href={item.href}
-            className="flex items-center gap-2 text-lg text-muted"
-          >
-            {item.variant === "search" && <SearchIcon />}
-            {item.label}
-          </Link>
-        ))}
-
-        <Link href="/cart" className="block text-lg">
-          Cart ({cartItems.length})
-        </Link>
-
-        <Link href="/wishlist" className="block text-lg">
-          Wishlist ({wishlistItems.length})
-        </Link>
-
-        {user ? (
-          <>
-            <p className="text-lg">
-              Welcome, {user.user_metadata?.full_name || user.email}
-            </p>
-
-            <form action={signOut}>
-              <button
-                type="submit"
-                className="text-lg text-left"
-              >
-                Sign Out
-              </button>
-            </form>
-          </>
-        ) : (
-          <>
-            <Link href="/sign-in" className="block text-lg">
-              Sign In
-            </Link>
-
-            <Link href="/sign-up" className="block text-lg">
-              Create Account
-            </Link>
-          </>
-        )}
-
-      </div>
-
-    </Container>
-  </div>
-)}
-      </AnimatePresence>
+      <MobileMenu
+  open={isMobileOpen}
+  onClose={() => setIsMobileOpen(false)}
+/>
     </header>
   );
 }
