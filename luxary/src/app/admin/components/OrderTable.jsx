@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 export default function OrderTable() {
   const [orders, setOrders] = useState([]);
+const [deletingId, setDeletingId] = useState(null);
 
   useEffect(() => {
     loadOrders();
@@ -18,6 +19,38 @@ export default function OrderTable() {
       console.error(err);
     }
   }
+
+  async function deleteOrder(id) {
+  const confirmed = window.confirm(
+    "Are you sure you want to permanently delete this order?"
+  );
+
+  if (!confirmed) return;
+
+  try {
+    setDeletingId(id);
+
+    const res = await fetch(`/api/admin/orders?id=${id}`, {
+      method: "DELETE",
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.error || "Failed to delete order.");
+    }
+
+    // Remove the deleted order from the table
+    setOrders((prev) => prev.filter((order) => order.id !== id));
+
+    alert("Order deleted successfully.");
+  } catch (err) {
+    console.error(err);
+    alert(err.message);
+  } finally {
+    setDeletingId(null);
+  }
+}
 
   if (orders.length === 0) {
     return (
@@ -80,13 +113,16 @@ export default function OrderTable() {
                 </button>
 
                 <button
-                  className="rounded bg-red-600 px-3 py-1 text-white"
-                  onClick={() =>
-                    alert("Delete button coming next")
-                  }
-                >
-                  Delete
-                </button>
+  onClick={() => deleteOrder(order.id)}
+  disabled={deletingId === order.id}
+  className={`rounded px-3 py-1 text-white transition ${
+    deletingId === order.id
+      ? "cursor-not-allowed bg-red-300"
+      : "bg-red-600 hover:bg-red-700"
+  }`}
+>
+  {deletingId === order.id ? "Deleting..." : "Delete"}
+</button>
 
               </td>
 
