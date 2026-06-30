@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function OrderTable() {
   const [orders, setOrders] = useState([]);
 const [deletingId, setDeletingId] = useState(null);
+const router = useRouter();
 
   useEffect(() => {
     loadOrders();
@@ -44,6 +46,7 @@ const [deletingId, setDeletingId] = useState(null);
     setOrders((prev) => prev.filter((order) => order.id !== id));
 
     alert("Order deleted successfully.");
+    window.location.reload();
   } catch (err) {
     console.error(err);
     alert(err.message);
